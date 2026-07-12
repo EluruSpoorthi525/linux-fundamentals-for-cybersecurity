@@ -2,136 +2,107 @@
 
 ## Introduction
 
-Software is one of the most important components of any operating system. In Linux, applications are installed, updated, and removed using a **package management system**.
+Linux uses **package managers** to install, update, remove, and manage software efficiently. Instead of downloading applications manually, package managers retrieve software from trusted repositories while automatically handling dependencies.
 
-A **package** is a compressed file that contains an application, its configuration files, documentation, and metadata required for installation.
+Package management is an essential Linux administration skill and plays a crucial role in keeping systems secure and up to date.
 
-Package managers automate software installation, dependency resolution, updates, and removal, making Linux systems easier to maintain and more secure.
+---
 
-Understanding package management is essential for Linux administrators, developers, and cybersecurity professionals.
+# What is a Package?
+
+A **package** is a compressed file containing:
+
+- Application files
+- Configuration files
+- Documentation
+- Dependencies
+- Installation information
+
+Examples:
+
+- `.deb` (Debian/Ubuntu)
+- `.rpm` (Red Hat/Fedora)
+- `.pkg.tar.zst` (Arch Linux)
 
 ---
 
 # What is a Package Manager?
 
-A **package manager** is a tool that manages software packages on a Linux system.
-
-It allows users to:
-
-* Install software
-* Update software
-* Remove software
-* Upgrade the operating system
-* Manage dependencies
-* Verify installed packages
-
----
-
-# Popular Linux Package Managers
-
-| Distribution   | Package Manager | Package Format |
-| -------------- | --------------- | -------------- |
-| Ubuntu         | APT             | `.deb`         |
-| Debian         | APT             | `.deb`         |
-| Linux Mint     | APT             | `.deb`         |
-| Fedora         | DNF             | `.rpm`         |
-| CentOS (Older) | YUM             | `.rpm`         |
-| RHEL           | DNF             | `.rpm`         |
-| Arch Linux     | Pacman          | `.pkg.tar.zst` |
-| openSUSE       | Zypper          | `.rpm`         |
-
----
-
-# Understanding Repositories
-
-A **repository** is an online server that stores software packages.
-
-Instead of downloading software manually, Linux downloads packages from trusted repositories.
+A **package manager** is a tool used to install, update, upgrade, and remove software.
 
 Benefits:
 
-* Verified software
-* Automatic updates
-* Dependency management
-* Security patches
+- Easy software installation
+- Automatic dependency management
+- Security updates
+- Software removal
+- Version management
 
 ---
 
-# APT (Advanced Package Tool)
+# Popular Package Managers
 
-APT is the default package manager for Debian-based distributions such as Ubuntu.
+| Distribution | Package Manager |
+|--------------|-----------------|
+| Ubuntu/Debian | APT |
+| Fedora | DNF |
+| RHEL/CentOS | YUM / DNF |
+| Arch Linux | Pacman |
+| openSUSE | Zypper |
 
-## Update Package List
+---
+
+# Common APT Commands
+
+Update package list:
 
 ```bash
 sudo apt update
 ```
 
-Downloads the latest package information.
-
----
-
-## Upgrade Installed Packages
+Upgrade installed packages:
 
 ```bash
 sudo apt upgrade
 ```
 
-Updates all installed software.
-
----
-
-## Install a Package
+Install a package:
 
 ```bash
 sudo apt install git
 ```
 
-APT automatically installs required dependencies.
-
----
-
-## Remove a Package
+Remove a package:
 
 ```bash
 sudo apt remove git
 ```
 
----
-
-## Remove Package and Configuration Files
+Remove package with configuration files:
 
 ```bash
 sudo apt purge git
 ```
 
----
-
-## Remove Unused Dependencies
+Remove unused dependencies:
 
 ```bash
 sudo apt autoremove
 ```
 
----
-
-## Search for a Package
+Search for a package:
 
 ```bash
 apt search nginx
 ```
 
----
-
-## Display Package Information
+Display package information:
 
 ```bash
 apt show nginx
 ```
 
----
-
-## List Installed Packages
+List installed packages:
 
 ```bash
 apt list --installed
@@ -139,189 +110,68 @@ apt list --installed
 
 ---
 
-# DNF (Fedora, RHEL)
+# Other Package Managers
 
-Install software:
+### DNF (Fedora)
 
 ```bash
 sudo dnf install nginx
-```
-
-Update packages:
-
-```bash
 sudo dnf update
-```
-
-Remove software:
-
-```bash
 sudo dnf remove nginx
 ```
 
-Search packages:
-
-```bash
-dnf search nginx
-```
-
----
-
-# YUM (Older CentOS)
-
-Install:
+### YUM (Older CentOS)
 
 ```bash
 sudo yum install nginx
-```
-
-Update:
-
-```bash
 sudo yum update
-```
-
-Remove:
-
-```bash
 sudo yum remove nginx
 ```
 
----
-
-# Pacman (Arch Linux)
-
-Install:
+### Pacman (Arch Linux)
 
 ```bash
 sudo pacman -S nginx
-```
-
-Update system:
-
-```bash
 sudo pacman -Syu
-```
-
-Remove package:
-
-```bash
 sudo pacman -R nginx
 ```
 
-Search package:
-
-```bash
-pacman -Ss nginx
-```
-
 ---
 
-# Installing Local Packages
+# Repositories
 
-Install a `.deb` package:
+A **repository** is an online storage location that contains software packages.
 
-```bash
-sudo dpkg -i package.deb
-```
+Benefits:
 
-Fix broken dependencies:
-
-```bash
-sudo apt --fix-broken install
-```
-
-Install an `.rpm` package:
-
-```bash
-sudo rpm -ivh package.rpm
-```
-
----
-
-# Checking Installed Software
-
-Check if Git is installed:
-
-```bash
-git --version
-```
-
-Locate the executable:
-
-```bash
-which git
-```
-
-Display package details:
-
-```bash
-apt show git
-```
-
----
-
-# Updating the System
-
-Updating regularly is essential for security.
-
-```bash
-sudo apt update
-sudo apt upgrade
-```
-
-Many security vulnerabilities are fixed through package updates.
-
----
-
-# Package Management Workflow
-
-```text
-Software Needed
-       │
-       ▼
-Search Package
-       │
-       ▼
-Install Package
-       │
-       ▼
-Use Software
-       │
-       ▼
-Update Regularly
-       │
-       ▼
-Remove if No Longer Needed
-```
+- Trusted software
+- Automatic updates
+- Verified packages
+- Easy installation
 
 ---
 
 # Best Practices
 
-* Install software only from trusted repositories.
-* Keep your system updated.
-* Remove unused packages.
-* Avoid downloading software from unknown websites.
-* Review package information before installation.
-* Use official repositories whenever possible.
+- Install software from trusted repositories.
+- Keep packages updated.
+- Remove unused software.
+- Regularly install security updates.
+- Avoid downloading software from unknown sources.
 
 ---
 
 # Cybersecurity Relevance
 
-Package management plays an important role in securing Linux systems.
+Package management helps security professionals to:
 
-Cybersecurity professionals use package managers to:
+- Install security tools
+- Apply security patches
+- Remove vulnerable software
+- Keep systems up to date
+- Reduce security risks
 
-* Apply security patches
-* Update vulnerable software
-* Install security tools
-* Verify software authenticity
-* Remove outdated or vulnerable packages
-* Maintain system integrity
-
-Examples of security tools installed via APT:
+Examples of security tools:
 
 ```bash
 sudo apt install nmap
@@ -329,64 +179,29 @@ sudo apt install wireshark
 sudo apt install tcpdump
 ```
 
-These tools are commonly used for network analysis and security testing.
-
 ---
 
 # Key Takeaways
 
-* A package contains software and its related files.
-* Package managers automate software installation and maintenance.
-* APT is used on Debian-based systems.
-* DNF is used on Fedora and modern RHEL systems.
-* Pacman is used on Arch Linux.
-* Keeping packages updated improves system security.
-* Trusted repositories help ensure software authenticity.
+- Packages contain software and related files.
+- Package managers automate software management.
+- APT is used on Ubuntu/Debian.
+- DNF is used on Fedora.
+- Pacman is used on Arch Linux.
+- Keeping packages updated improves security.
 
 ---
 
 # Interview Questions
 
-1. What is a package manager?
-2. What is the difference between a package and a repository?
-3. Which package manager is used on Ubuntu?
-4. Which command updates the package list in Ubuntu?
+1. What is a package?
+2. What is a package manager?
+3. Which package manager does Ubuntu use?
+4. What is the purpose of `apt update`?
 5. What is the difference between `apt remove` and `apt purge`?
-6. Which package manager is used on Arch Linux?
-7. Why should software be installed from trusted repositories?
-8. What does `apt autoremove` do?
-9. Why are software updates important for cybersecurity?
-10. How do package managers handle dependencies?
-
----
-
-# Hands-on Practice
-
-Run the following commands on an Ubuntu system:
-
-```bash
-sudo apt update
-
-apt search git
-
-sudo apt install git
-
-git --version
-
-which git
-
-apt show git
-
-sudo apt remove git
-
-sudo apt autoremove
-```
-
-Observe how packages are searched, installed, verified, and removed.
 
 ---
 
 # Next Topic
 
-➡️ **16-Linux-Services-and-Systemctl.md** – Learn how Linux manages background services using **systemd** and `systemctl`, including starting, stopping, enabling, disabling, restarting, and checking the status of services.
-
+➡️ **17-Environment-Variables.md**
